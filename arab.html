@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illatvarázs Parfüméria</title>
+    <link rel="stylesheet" href="index1.css">
+</head>
+<body>
+
+  <div id="cart">
+    <h3>Kosár</h3>
+    <ul id="cart-items"></ul>
+    <p><strong>Összeg: <span id="total-price">0</span> Ft</strong></p>
+    <button onclick="checkout()" class="btn">Fizetés</button>
+</div>
+
+
+    <header>
+        <img src="logo.png" alt="" >
+        <a href="index.html"><button>Főoldal</button></a>
+        <a href="termekek.html"><button class="termek">Termékeink</button></a> 
+        <a href="rolunk.html"><button>Kapcsolat</button></a>
+    </header>
+
+    <div class="card1">
+      <div class="product" data-name="Montale Arabians Tonka 100ML" data-price="39820">
+        <img src="arab.png" alt="Arabians" width="180" height="auto">
+        <h1>
+            Montale
+        </h1>
+        <h2>Arabians Tonka</h2>
+        <h4>39 820 Ft</h4>
+        <button onclick="addToCart(this)">Kosárba</button> 
+        <br>
+        <div class="header1">
+          <h4></h4>
+          <h6>A ritka parfümök szerelmeseinek készült a Montale Arabians Tonka. Az illat az arab lovak előtt tiszteleg egyedi fűszeres, varázslatosan rózsás illatával. Merész, lendületes, és tüzes illat, szinte nőies megjelenéssel. </h6>
+         
+
+        </div>
+        </div>
+      </div>
+
+
+
+</body>
+<script>
+  let cart = [];
+  
+  function addToCart(button) {
+      let product = button.parentElement;
+      let name = product.getAttribute("data-name");
+      let price = parseInt(product.getAttribute("data-price"));
+      cart.push({ name, price });
+      updateCart();
+  }
+  
+  function updateCart() {
+      let cartItems = document.getElementById("cart-items");
+      let totalPrice = document.getElementById("total-price");
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+          let li = document.createElement("li");
+          li.textContent = `${item.name} - ${item.price} Ft`;
+          cartItems.appendChild(li);
+          total += item.price;
+      });
+      totalPrice.textContent = total;
+  }
+  
+  function checkout() {
+      alert("Fizetés sikeres! Köszönjük a vásárlást!");
+      cart = [];
+      updateCart();
+  }
+</script>
+</html>

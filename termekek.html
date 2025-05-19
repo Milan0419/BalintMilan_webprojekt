@@ -1,0 +1,109 @@
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimicheesy's Webshop</title>
+   <link rel="stylesheet" href="index.css">
+
+</head>
+<header>
+  <img src="logo.png" alt="" >
+  <a href="index.html"><button>Főoldal</button></a>
+  <a href="termekek.html"><button class="termek">Termékeink</button></a> 
+  <a href="rolunk.html"><button>Kapcsolat</button></a>
+
+</header>
+
+<body>
+    <div id="cart">
+        <h3>Kosár</h3>
+        <ul id="cart-items"></ul>
+        <p><strong>Összeg: <span id="total-price">0</span> Ft</strong></p>
+        <button onclick="checkout()" class="btn">Fizetés</button>
+  </div>
+
+
+
+
+  
+
+                
+                  <div class="container">
+                        <div class="product" data-name="YSL Y L'Elixir 50ML" data-price="42000">
+                        <img src="YSL.png" alt="YSL" width="550" height="auto">
+                            <h2>Yves Saint Laurent</h2>
+                            <p>Y Elixir de Parfum</p>
+                            <p>50ML</p>
+                            <br>
+                            <p><strong>Ár: 42 000 Ft</strong></p>
+                           <a href="ysl.html"> <button>Termékhez...</button> </a>
+                        </div>
+
+                        <div class="product" data-name="Jean Paul Gaultier Ultra Male 125ML" data-price="35490">
+                            <img src="jpg.png" alt="JPG" width="310" height="auto">
+                            <h2>Jean Paul Gaultier</h2>
+                            <p>Le Male Eau de Toilette</p>
+                            <p>125ML</p>
+                            <br>
+                            <p><strong>Ár: 35 490 Ft</strong></p>
+                            <a href="jpg.html"> <button>Termékhez...</button> </a>
+                        </div>
+
+
+
+                        <div class="product" data-name="Valentino Born In Roma Extradose 100ML" data-price="45360">
+                            <img src="val.png" alt="VAL" width="320" height="auto">
+                            <h2>Valentino</h2>
+                            <p>Born In Roma Eau de Toilette</p>
+                            <p>100ML</p>
+                            <br>
+                            <p><strong>Ár: 45 360 Ft</strong></p>
+                            <button>Termékhez...</button>
+                        </div>
+
+                        <div class="product" data-name="Montale Arabians Tonka 100ML" data-price="39820">
+                            <img src="arab.png" alt="Arabians" width="280" height="auto">
+                            <h2>Montale</h2>
+                            <p>Arabians Tonka Extrait de Parfum</p>
+                            <p>100ML</p>
+                            <br>
+                            <p><strong>Ár: 39 820 Ft</strong></p>
+                            <a href="arab.html"> <button>Termékhez...</button> </a>
+                        </div>  
+                        
+
+                </div>
+
+    <script>
+        let cart = [];
+        
+        function addToCart(button) {
+            let product = button.parentElement;
+            let name = product.getAttribute("data-name");
+            let price = parseInt(product.getAttribute("data-price"));
+            cart.push({ name, price });
+            updateCart();
+        }
+        
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            let totalPrice = document.getElementById("total-price");
+            cartItems.innerHTML = "";
+            let total = 0;
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = `${item.name} - ${item.price} Ft`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+            totalPrice.textContent = total;
+        }
+        
+        function checkout() {
+            alert("Fizetés sikeres! Köszönjük a vásárlást!");
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>
