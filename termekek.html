@@ -14,20 +14,8 @@
 
 </header>
 
-<body>
-    <div id="cart">
-        <h3>Kosár</h3>
-        <ul id="cart-items"></ul>
-        <p><strong>Összeg: <span id="total-price">0</span> Ft</strong></p>
-        <button onclick="checkout()" class="btn">Fizetés</button>
-  </div>
-
-
-
-
-  
-
-                
+<body>  
+    <button class="back" onclick="history.back()">Vissza</button>              
                   <div class="container">
                         <div class="product" data-name="YSL Y L'Elixir 50ML" data-price="42000">
                         <img src="YSL.png" alt="YSL" width="550" height="auto">
@@ -51,14 +39,14 @@
 
 
 
-                        <div class="product" data-name="Valentino Born In Roma Extradose 100ML" data-price="45360">
+                        <div class="product" data-name="Valentino Born In Roma EdT 100ML" data-price="45360">
                             <img src="val.png" alt="VAL" width="320" height="auto">
                             <h2>Valentino</h2>
                             <p>Born In Roma Eau de Toilette</p>
                             <p>100ML</p>
                             <br>
                             <p><strong>Ár: 45 360 Ft</strong></p>
-                            <button>Termékhez...</button>
+                            <a href="valen.html"> <button>Termékhez...</button> </a>
                         </div>
 
                         <div class="product" data-name="Montale Arabians Tonka 100ML" data-price="39820">
@@ -74,36 +62,6 @@
 
                 </div>
 
-    <script>
-        let cart = [];
-        
-        function addToCart(button) {
-            let product = button.parentElement;
-            let name = product.getAttribute("data-name");
-            let price = parseInt(product.getAttribute("data-price"));
-            cart.push({ name, price });
-            updateCart();
-        }
-        
-        function updateCart() {
-            let cartItems = document.getElementById("cart-items");
-            let totalPrice = document.getElementById("total-price");
-            cartItems.innerHTML = "";
-            let total = 0;
-            cart.forEach(item => {
-                let li = document.createElement("li");
-                li.textContent = `${item.name} - ${item.price} Ft`;
-                cartItems.appendChild(li);
-                total += item.price;
-            });
-            totalPrice.textContent = total;
-        }
-        
-        function checkout() {
-            alert("Fizetés sikeres! Köszönjük a vásárlást!");
-            cart = [];
-            updateCart();
-        }
-    </script>
+    
 </body>
 </html>
